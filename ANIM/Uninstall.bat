@@ -1,0 +1,62 @@
+@ ECHO OFF
+TITLE Uninstall
+COLOR 02
+CLS
+
+IF "%~f0"=="C:\ANIM\Uninstall.bat" GOTO ERROR
+
+SET TASK01=DisableNetwork
+SET TASK02=EnableNetwork
+SET TASK03=ForcedReboot
+SET TASK04=
+SET TASK05=
+SET TASK06=
+SET TASK07=
+SET TASK08=
+SET TASK09=
+SET TASK10=
+
+IF NOT "%TASK01%"=="" ( SCHTASKS /Delete /TN "%TASK01%" /F )
+IF NOT "%TASK02%"=="" ( SCHTASKS /Delete /TN "%TASK02%" /F )
+IF NOT "%TASK03%"=="" ( SCHTASKS /Delete /TN "%TASK03%" /F )
+IF NOT "%TASK04%"=="" ( SCHTASKS /Delete /TN "%TASK04%" /F )
+IF NOT "%TASK05%"=="" ( SCHTASKS /Delete /TN "%TASK05%" /F )
+IF NOT "%TASK06%"=="" ( SCHTASKS /Delete /TN "%TASK06%" /F )
+IF NOT "%TASK07%"=="" ( SCHTASKS /Delete /TN "%TASK07%" /F )
+IF NOT "%TASK08%"=="" ( SCHTASKS /Delete /TN "%TASK08%" /F )
+IF NOT "%TASK09%"=="" ( SCHTASKS /Delete /TN "%TASK09%" /F )
+IF NOT "%TASK10%"=="" ( SCHTASKS /Delete /TN "%TASK10%" /F )
+
+ECHO.
+
+IF EXIST C:\ANIM (
+
+	RMDIR /S /Q C:\ANIM > NUL
+	
+	IF NOT EXIST C:\ANIM (
+	
+		ECHO C:\ANIM HAS BEEN REMOVED FROM THE SYSTEM
+	
+	) ELSE (
+	
+		ECHO C:\ANIM COULD NOT BE REMOVED COMPLETELY
+	
+	)
+
+) ELSE (
+
+	ECHO C:\ANIM DOES NOT EXIST
+
+)
+
+GOTO EXIT
+
+: ERROR
+
+IF "%~f0"=="C:\ANIM\Uninstall.bat" ECHO RUN THE FILE C:\ANIM\Uninstall.bat IN ANOTHER DIRECTORY
+
+: EXIT
+
+TIMEOUT /T 5 /NOBREAK > NUL
+
+EXIT

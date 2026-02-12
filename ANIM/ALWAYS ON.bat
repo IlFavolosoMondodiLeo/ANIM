@@ -1,0 +1,3 @@
+SCHTASKS /Create /RU "DOMINIO\Administrator" /RP "password" /SC DAILY /TN "EnableNetwork" /TR "C:\ANIM\EnableNetwork.bat" /ST 06:30 /F /RL HIGHEST
+SCHTASKS /Create /RU "DOMINIO\Administrator" /RP "password" /SC DAILY /TN "DisableNetwork" /TR "C:\ANIM\DisableNetwork.bat" /ST 21:00 /F /RL HIGHEST
+SCHTASKS /Create /RU "DOMINIO\Administrator" /RP "password" /SC WEEKLY /D SAT /TN "ForcedReboot" /TR "C:\ANIM\ForcedReboot.bat" /ST 16:00 /F /RL HIGHEST
